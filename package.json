@@ -1,23 +1,36 @@
 {
-    "name": "@zsoltszavo/import-linter",
-    "version": "0.0.1",
-    "description": "Linter for import lines",
-    "main": "lib/index.js",
-    "author": "zsoltszavo <zsoltszv@gmail.com>",
-    "homepage": "https://github.com/zsoltszavo/import-linter",
-    "private": false,
-    "files": [
-        "lib"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/zsoltszavo/import-linter"
-    },
-    "bin": {
-        "import-linter": "lib/index.js"
-    }
+  "name": "@zsoltszavo/eslint-plugin-import-lines",
+  "version": "0.0.1",
+  "description": "Linter for import lines",
+  "main": "lib/index.js",
+  "author": "zsoltszavo <zsoltszv@gmail.com>",
+  "homepage": "https://github.com/zsoltszavo/eslint-plugin-import-lines",
+  "private": false,
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zsoltszavo/eslint-plugin-import-lines"
+  },
+  "bin": {
+    "import-linter": "lib/index.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+      "eslint",
+      "eslint-plugin",
+      "eslintplugin",
+      "lint",
+      "import"
+  ],	
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
