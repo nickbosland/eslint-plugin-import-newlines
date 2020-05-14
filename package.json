@@ -1,6 +1,6 @@
 {
   "name": "@zsoltszavo/eslint-plugin-import-lines",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Linter for import lines",
   "main": "lib/index.js",
   "author": "zsoltszavo <zsoltszv@gmail.com>",
@@ -24,12 +24,12 @@
     "lib": "lib"
   },
   "keywords": [
-      "eslint",
-      "eslint-plugin",
-      "eslintplugin",
-      "lint",
-      "import"
-  ],	
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "lint",
+    "import"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
