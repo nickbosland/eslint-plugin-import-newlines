@@ -1,6 +1,6 @@
 {
   "name": "@zsoltszavo/eslint-plugin-import-lines",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Linter for import lines",
   "main": "lib/index.js",
   "author": "zsoltszavo <zsoltszv@gmail.com>",
@@ -31,6 +31,31 @@
     "import"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "test:watch": "mocha --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "mocha": "^8.1.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=6.0.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }

@@ -1,9 +1,8 @@
 # @zsoltszavo/eslint-plugin-import-lines
 
-Plugin for import multilines waring.
+Plugin for linting imports that must be broken into multiple lines above a certain number of items.
 
-Currently having only one rule, the imports-multiline which will throw error in case of more than 5 imports in a line,
-and if its multiline already it will throw error if there is not only one in a line
+There is only one rule at the moment &ndash; `imports-multiline` &ndash; which will report when there are more than 5 values in a line by default, and if there are less it will report when the import is not on a single line.
 
 ## Installation
 
@@ -40,3 +39,17 @@ Then add the rule in the rules section.
     }
 }
 ```
+
+Optionally, specify the maximum number of items before the plugin requires breaking up the `import` to multiple lines:
+
+```json
+{
+    "rules": {
+        "@zsoltszavo/import-lines/imports-multiline": ["error", 6]
+    }
+}
+```
+
+### Testing
+
+Tests can be run via `npm run test`, make sure these pass after every change. Be sure to add tests for new features.
