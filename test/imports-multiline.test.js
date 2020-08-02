@@ -9,6 +9,8 @@ const ruleTester = new RuleTester({
   },
 });
 
+const repeatString = (str, times) => [...new Array(times + 1)].join(str);
+
 ruleTester.run('imports-multiline', rule, {
   valid: [
     {
@@ -34,6 +36,34 @@ ruleTester.run('imports-multiline', rule, {
     {
       code: "import './test.css'",
     },
+    {
+      code: "import { a, b, c, d } from './test'",
+      options: [4, 50],
+    },
+    {
+      code: `import { ${repeatString('a', 25)} } from './test'`,
+      options: [1, 50],
+    },
+    {
+      code: `import {\n${repeatString('a', 25)},\n${repeatString('b', 25)}\n} from './test'`,
+      options: [6, 50],
+    },
+    {
+      code: "import a from 'a'",
+      options: [10, 17],
+    },
+    {
+      code: "import { a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t } from './test'",
+      options: [20, 83],
+    },
+    {
+      code: "import test, { a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t } from './test'",
+      options: [20, 89],
+    },
+    {
+      code: `import { ${repeatString('a', 512)} } from './test'`,
+      options: [1],
+    },
   ],
 
   invalid: [
@@ -58,19 +88,19 @@ ruleTester.run('imports-multiline', rule, {
       code: "import { a, b, c, d } from './test'",
       output: "import {\na,\nb,\nc,\nd\n} from './test'",
       options: [1],
-      errors: [{ messageId: 'mustSplit' }],
+      errors: [{ messageId: 'mustSplitMany' }],
     },
     {
       code: "import test, { a, b } from './test'",
       output: "import test, {\na,\nb\n} from './test'",
       options: [1],
-      errors: [{ messageId: 'mustSplit' }],
+      errors: [{ messageId: 'mustSplitMany' }],
     },
     {
       code: "import test, { a, b as banana } from './test'",
       output: "import test, {\na,\nb as banana\n} from './test'",
       options: [1],
-      errors: [{ messageId: 'mustSplit' }],
+      errors: [{ messageId: 'mustSplitMany' }],
     },
     {
       code: "import { \na,\n\nb,\n\n\nc,\n\n\nd,\n\n\n\ne\n} from './test'",
@@ -95,6 +125,18 @@ ruleTester.run('imports-multiline', rule, {
       output: "import {\na,\nb,\nc\n} from './test'",
       options: [1],
       errors: [{ messageId: 'limitLineCount' }],
+    },
+    {
+      code: "import { getPublicStaticVoidFinalObjectClassExtensionFactory } from './test'",
+      output: "import {\ngetPublicStaticVoidFinalObjectClassExtensionFactory\n} from './test'",
+      options: [4, 50],
+      errors: [{ messageId: 'mustSplitLong' }],
+    },
+    {
+      code: "import { aaaaaaaaaa, bbbbbbbbbb, cccccccccc, dddddddddd } from './test'",
+      output: "import {\naaaaaaaaaa,\nbbbbbbbbbb,\ncccccccccc,\ndddddddddd\n} from './test'",
+      options: [4, 50],
+      errors: [{ messageId: 'mustSplitLong' }],
     },
   ],
 });

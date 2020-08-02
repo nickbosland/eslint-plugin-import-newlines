@@ -40,15 +40,40 @@ Then add the rule in the rules section.
 }
 ```
 
-Optionally, specify the maximum number of items before the plugin requires breaking up the `import` to multiple lines:
+The is plugin has two optional arguments, `maxItems` (default: `4`) and `maxLineLength` (default: `Infinity`). The latter can be especially useful when used with the `max-len` rule to avoid lines becoming too long after the automatic fixes are applied.
 
-```json
-{
-    "rules": {
-        "@zsoltszavo/import-lines/imports-multiline": ["error", 6]
-    }
-}
-```
+You can configure them like so: 
+
+* To specify **6** as the maximum number of items before the plugin requires breaking up the `import` to multiple lines:
+
+  ```json
+  {
+      "rules": {
+          "@zsoltszavo/import-lines/imports-multiline": [
+              "error",
+              6
+          ]
+      }
+  }
+  ```
+
+* To specify the maximum number of items as **4** and the length of the line before splitting is required as **120**:
+
+  ```json
+  {
+      "rules": {
+          "@zsoltszavo/import-lines/imports-multiline": [
+              "error",
+              4,
+              120
+          ]
+      }
+  }
+  ```
+  
+  This argument ensures that you are notified if the line length exceeds the configured maximum, and the plugin will automatically fix the error by splitting the import to multiple lines.
+  
+  In addition, if there are less than 4 items, but they would exceed the maximum length if put on the same line, the automatic fix for that will not be applied.
 
 ### Testing
 
