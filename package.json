@@ -1,10 +1,10 @@
 {
   "name": "eslint-plugin-import-newlines",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "ESLint plugin for enforcing newlines in ES6 import statements past a certain number of items",
   "main": "lib/index.js",
   "author": {
-    "name": "seinopsys",
+    "name": "SeinopSys",
     "email": "david@seinopsys.dev",
     "url": "https://seinopsys.dev"
   },

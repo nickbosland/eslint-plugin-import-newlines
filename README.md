@@ -2,7 +2,7 @@
 
 ESLint plugin for enforcing newlines in ES6 import statements past a certain number of items.
 
-There is only one rule in this plugin which will report when there are more than 5 values in a line by default, and if there are less it will report when the import is not on a single line.
+There is only one rule in this plugin which will report when there are more than 4 values in a line by default, and if there are less it will report when the import is not on a single line.
 
 ## Installation
 
