@@ -1,21 +1,27 @@
 {
-    "env": {
-        "commonjs": true,
-        "es2020": true,
-        "node": true
-    },
-    "extends": [
-        "airbnb-base"
+  "env": {
+    "commonjs": true,
+    "es2020": true,
+    "node": true
+  },
+  "plugins": [
+    "eslint-plugin"
+  ],
+  "extends": [
+    "airbnb-base",
+    "plugin:eslint-plugin/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 11
+  },
+  "rules": {
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
     ],
-    "parserOptions": {
-        "ecmaVersion": 11
-    },
-    "rules": {
-        "quotes": [
-            "error",
-            "single",
-            { "avoidEscape": true }
-        ],
-        "no-nested-ternary": "off"
-    }
+    "no-nested-ternary": "off"
+  }
 }

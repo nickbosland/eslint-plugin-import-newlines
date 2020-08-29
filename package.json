@@ -1,11 +1,20 @@
 {
-  "name": "@zsoltszavo/eslint-plugin-import-lines",
-  "version": "1.0.0",
-  "description": "Linter for import lines",
+  "name": "eslint-plugin-import-newlines",
+  "version": "0.0.1",
+  "description": "ESLint plugin for enforcing newlines in ES6 import statements past a certain number of items",
   "main": "lib/index.js",
-  "author": "zsoltszavo <zsoltszv@gmail.com>",
-  "homepage": "https://github.com/zsoltszavo/eslint-plugin-import-lines",
+  "author": {
+    "name": "seinopsys",
+    "email": "david@seinopsys.dev",
+    "url": "https://seinopsys.dev"
+  },
   "private": false,
+  "contributors": [
+    {
+      "name": "zsoltszavo",
+      "email": "zsoltszv@gmail.com"
+    }
+  ],
   "files": [
     "lib"
   ],
@@ -15,7 +24,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zsoltszavo/eslint-plugin-import-lines"
+    "url": "https://github.com/SeinopSys/eslint-plugin-import-newlines"
   },
   "bin": {
     "import-linter": "lib/index.js"
@@ -38,6 +47,7 @@
   "devDependencies": {
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-eslint-plugin": "^2.3.0",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",

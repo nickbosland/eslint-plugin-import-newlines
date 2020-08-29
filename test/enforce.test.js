@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 const { RuleTester } = require('eslint');
-const rule = require('../lib/imports-multiline');
+const rule = require('../lib/enforce.js');
 
 const ruleTester = new RuleTester({
   parserOptions: {
@@ -11,7 +11,7 @@ const ruleTester = new RuleTester({
 
 const repeatString = (str, times) => [...new Array(times + 1)].join(str);
 
-ruleTester.run('imports-multiline', rule, {
+ruleTester.run('enforce', rule, {
   valid: [
     {
       code: "import { a, b, c, d } from './test'",
