@@ -42,11 +42,30 @@ Then add the rule in the rules section.
 }
 ```
 
-The is plugin has two optional arguments, `maxItems` (default: `4`) and `maxLineLength` (default: `Infinity`). The latter can be especially useful when used with the `max-len` rule to avoid lines becoming too long after the automatic fixes are applied.
+### Options
 
-You can configure them like so:
+The first and most readable way is to use an object which allows you to specify any of the available options, leaving everything that's not specified as the default.
 
-* To specify **6** as the maximum number of items before the plugin requires breaking up the `import` to multiple lines:
+  ```json
+  {
+      "rules": {
+          "max-len": ["error", 100],
+          "semi": ["error", "never"],
+          "import-newlines/enforce": [
+              "error",
+              {
+                  "items": 2,
+                  "max-len": 100,
+                  "semi": false
+              }
+          ]
+      }
+  }
+  ```
+
+Because of its easy expandability this is the only format that will allow you to configure any new options &ndash; should they be added &ndash; but there is also a shorter syntax that will let you configure just the first two and keep everything else default.
+
+To specify `items` as **6**:
 
   ```json
   {
@@ -59,11 +78,12 @@ You can configure them like so:
   }
   ```
 
-* To specify the maximum number of items as **4** and the length of the line before splitting is required as **120**:
+To specify `items` as **4** and `max-len` as **120**:
 
   ```json
   {
       "rules": {
+          "max-len": ["error", 120],
           "import-newlines/enforce": [
               "error",
               4,
@@ -73,9 +93,21 @@ You can configure them like so:
   }
   ```
 
-  This argument ensures that you are notified if the line length exceeds the configured maximum, and the plugin will automatically fix the error by splitting the import to multiple lines.
+#### `items` [number] (default: `4`)
 
-  In addition, if there are less than 4 items, but they would exceed the maximum length if put on the same line, the automatic fix for that will not be applied.
+Specifies the maximum number of items before the plugin requires breaking up the `import` to multiple lines. If there are exactly this many or fewer items, then the plugin will make sure the import stays on one line unless it would violate the `max-len` option. More items than this number will always be split onto multiple lines.
+
+Note that the plugin simply inserts newline characters after each token in the import when splitting, and the fix output never includes leading tabs or spaces. To have consistent indentation, be sure to use the built-in `indent` rule.
+
+#### `max-len` [number] (default: `Infinity`)
+
+Specifies the maximum length for source code lines in your project. This allows the plugin to prevent quick fixes that would cause your code to violate this limit from being applied. The rule will also automatically split import lines for you should they exceed the limit, which works great as an automatic fix for the ESLint built-in `max-len` rule (which doesn't have any quick fixes out of the box at the time of writing) for your imports. It's highly recommended you keep this option's value in sync with what you use for the aforementioned rule for best results.
+
+#### `semi` [boolean] (default: `true`)
+
+Indicates whether you want to have semicolons at the end of your imports. This is used in the maximum length calculation for the previous rule, so be sure to set this to false if your code style does not use semicolons at the end of imports otherwise it can lead to some unexpected automatic fixes.
+
+Note that this **does not enforce** the use of semicolons, use the built-in ESLint `semi` rule to control that. Setting this to the right value merely aims to ensure that the plugin will not produce conflicting quick fixes.
 
 ### Testing
 
