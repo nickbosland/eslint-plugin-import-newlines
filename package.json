@@ -68,5 +68,8 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
+  },
+  "np": {
+    "releaseDraft": false
   }
 }
