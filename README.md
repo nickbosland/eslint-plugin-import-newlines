@@ -1,4 +1,4 @@
-# eslint-plugin-import-newlines  [![Build Status](https://travis-ci.com/SeinopSys/eslint-plugin-import-newlines.svg?branch=master)](https://travis-ci.com/SeinopSys/eslint-plugin-import-newlines)
+# eslint-plugin-import-newlines [![npm](https://img.shields.io/npm/v/eslint-plugin-import-newlines)]((https://www.npmjs.com/package/eslint-plugin-import-newlines)) [![npm](https://img.shields.io/npm/dw/eslint-plugin-import-newlines)](https://www.npmjs.com/package/eslint-plugin-import-newlines) [![Build Status](https://travis-ci.com/SeinopSys/eslint-plugin-import-newlines.svg?branch=master)](https://travis-ci.com/SeinopSys/eslint-plugin-import-newlines)
 
 ESLint plugin for enforcing newlines in ES6 import statements past a certain number of items.
 
