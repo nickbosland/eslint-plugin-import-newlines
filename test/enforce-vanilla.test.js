@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 const { RuleTester } = require('eslint');
-const rule = require('../lib/enforce.js');
+const rule = require('../lib/enforce');
 
 const ruleTester = new RuleTester({
   parserOptions: {
@@ -125,7 +125,7 @@ ruleTester.run('enforce', rule, {
       }],
     },
     {
-      code: "import {\n    aaaaaaaaaaa,\n    aaaaaaaaaaaaaaaaaaa,\n    aaaaaaaaaaaaa\n} from './aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';",
+      code: `import {\n    aaaaaaaaaaa,\n    aaaaaaaaaaaaaaaaaaa,\n    aaaaaaaaaaaaa\n} from './${repeatString('a', 72)}';`,
       options: [{
         items: 4,
         'max-len': 140,
@@ -133,7 +133,7 @@ ruleTester.run('enforce', rule, {
       }],
     },
     {
-      code: "import { aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa } from './aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';",
+      code: `import { ${repeatString('a', 46)} } from './${repeatString('a', 72)}';`,
       options: [{
         items: 4,
         'max-len': 140,
@@ -141,7 +141,7 @@ ruleTester.run('enforce', rule, {
       }],
     },
     {
-      code: "import aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, { aaa } from './aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';",
+      code: `import ${repeatString('a', 41)}, { aaa } from './${repeatString('a', 72)}';`,
       options: [{
         items: 4,
         'max-len': 140,
@@ -240,8 +240,8 @@ ruleTester.run('enforce', rule, {
       errors: [{ messageId: 'mustSplitLong' }],
     },
     {
-      code: "import {\n    aaaaaaaaaaa,\n    aaaaaaaaaaaaaaaaaaa,\n    aaaaaaaaaaaaa\n} from './aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';",
-      output: "import { aaaaaaaaaaa, aaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaa } from './aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'",
+      code: `import {\n    aaaaaaaaaaa,\n    aaaaaaaaaaaaaaaaaaa,\n    aaaaaaaaaaaaa\n} from './${repeatString('a', 72)}';`,
+      output: `import { aaaaaaaaaaa, aaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaa } from './${repeatString('a', 72)}'`,
       options: [{
         items: 4,
         'max-len': 140,
@@ -250,8 +250,8 @@ ruleTester.run('enforce', rule, {
       errors: [{ messageId: 'mustNotSplit' }],
     },
     {
-      code: "import { aaaaaaaaaaa, aaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaa } from './aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';",
-      output: "import {\naaaaaaaaaaa,\naaaaaaaaaaaaaaaaaaa,\naaaaaaaaaaaaa\n} from './aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';",
+      code: `import { aaaaaaaaaaa, aaaaaaaaaaaaaaaaaaa, aaaaaaaaaaaaa } from './${repeatString('a', 73)}';`,
+      output: `import {\naaaaaaaaaaa,\naaaaaaaaaaaaaaaaaaa,\naaaaaaaaaaaaa\n} from './${repeatString('a', 73)}';`,
       options: [{
         items: 4,
         'max-len': 140,

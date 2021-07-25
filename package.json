@@ -41,17 +41,20 @@
     "import"
   ],
   "scripts": {
+    "lint": "eslint",
     "test": "mocha",
     "test:watch": "mocha --watch"
   },
   "devDependencies": {
-    "eslint": "^7.5.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-eslint-plugin": "^2.3.0",
-    "eslint-plugin-import": "^2.22.0",
+    "@typescript-eslint/parser": "^4.28.4",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-eslint-plugin": "^3.4.0",
+    "eslint-plugin-import": "^2.23.4",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
-    "mocha": "^8.1.0"
+    "lint-staged": "^10.5.4",
+    "mocha": "^9.0.2",
+    "typescript": "^4.3.5"
   },
   "peerDependencies": {
     "eslint": ">=6.0.0"
