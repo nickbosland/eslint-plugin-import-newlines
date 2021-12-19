@@ -148,6 +148,18 @@ ruleTester.run('enforce', rule, {
         semi: true,
       }],
     },
+    {
+      code: 'import {\naaa\n} from \'./file\';',
+      options: [0, 140],
+    },
+    {
+      code: 'import {\naaa\n} from \'./file\';',
+      options: [{
+        items: 0,
+        'max-len': 140,
+        semi: true,
+      }],
+    },
   ],
 
   invalid: [
@@ -258,6 +270,22 @@ ruleTester.run('enforce', rule, {
         semi: true,
       }],
       errors: [{ messageId: 'mustSplitLong' }],
+    },
+    {
+      code: "import { aaa } from './test'",
+      output: "import {\naaa\n} from './test'",
+      options: [0, 140],
+      errors: [{ messageId: 'mustSplitMany' }],
+    },
+    {
+      code: "import { bbb } from './test';",
+      output: "import {\nbbb\n} from './test';",
+      options: [{
+        items: 0,
+        'max-len': 140,
+        semi: true,
+      }],
+      errors: [{ messageId: 'mustSplitMany' }],
     },
   ],
 });
