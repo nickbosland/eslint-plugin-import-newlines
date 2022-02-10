@@ -129,6 +129,29 @@ ruleTester.run('enforce', rule, {
         semi: true,
       }],
     },
+    {
+      code: "import type {\na,\nb\n} from './test'",
+      options: [{
+        items: 4,
+        forceSingleLine: false,
+      }],
+    },
+    {
+      code: "import type {\ndefault as test,\na,\nb\n} from './test'",
+      options: [{
+        semi: true,
+        forceSingleLine: false,
+      }],
+    },
+    {
+      code: `import {\n    aaaaaaaaaaa,\n    aaaaaaaaaaaaaaaaaaa,\n    aaaaaaaaaaaaa\n} from './${repeatString('a', 72)}';`,
+      options: [{
+        items: 4,
+        'max-len': 140,
+        semi: false,
+        forceSingleLine: false,
+      }],
+    },
   ],
 
   invalid: [

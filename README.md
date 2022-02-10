@@ -109,6 +109,12 @@ Indicates whether you want to have semicolons at the end of your imports. This i
 
 Note that this **does not enforce** the use of semicolons, use the built-in ESLint `semi` rule to control that. Setting this to the right value merely aims to ensure that the plugin will not produce conflicting quick fixes.
 
+Also, to preserve backwards compatibility with the existing array-based configuration, this is always set to `false` when not using the new object syntax to configure the rule.
+
+#### `forceSingleLine` [boolean] (default: `true`)
+
+Forces the import to a single line provided there's less than or equal to `items` imported values and te result would fit within the configured `max-length`. This can be set to `false` if you want to be able to break imports up to multiple lines without the plugin reporting an error and offering an autofix.
+
 ### Testing
 
 Tests can be run via `npm run test`, make sure these pass after every change. Be sure to add tests for new features.

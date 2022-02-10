@@ -160,6 +160,36 @@ ruleTester.run('enforce', rule, {
         semi: true,
       }],
     },
+    {
+      code: "import {\na,\nb\n} from './test'",
+      options: [{
+        items: 4,
+        semi: false,
+        forceSingleLine: false,
+      }],
+    },
+    {
+      code: "import test, {\na as apple,\nb as banana\n} from './test'",
+      options: [{
+        items: 2,
+        semi: false,
+        forceSingleLine: false,
+      }],
+    },
+    {
+      code: "import test, {\na,\nb\n} from './test'",
+      options: [{
+        semi: false,
+        forceSingleLine: false,
+      }],
+    },
+    {
+      code: "import test, {\na,\nb\n} from './test'",
+      options: [{
+        semi: true,
+        forceSingleLine: false,
+      }],
+    },
   ],
 
   invalid: [
