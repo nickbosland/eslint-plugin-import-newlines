@@ -152,6 +152,14 @@ ruleTester.run('enforce', rule, {
         forceSingleLine: false,
       }],
     },
+    {
+      code: 'import {\n  type importType1,\n  type importType2,\n  importFunction,\n} from \'./src\';',
+      options: [{
+        items: Infinity,
+        'max-len': 70,
+        semi: true,
+      }],
+    },
   ],
 
   invalid: [
@@ -259,6 +267,16 @@ ruleTester.run('enforce', rule, {
       options: [{
         items: 4,
         'max-len': 140,
+        semi: true,
+      }],
+      errors: [{ messageId: 'mustSplitLong' }],
+    },
+    {
+      code: 'import { type importType1, type importType2, importFunction } from \'./src\';',
+      output: 'import {\ntype importType1,\ntype importType2,\nimportFunction\n} from \'./src\';',
+      options: [{
+        items: Infinity,
+        'max-len': 70,
         semi: true,
       }],
       errors: [{ messageId: 'mustSplitLong' }],
