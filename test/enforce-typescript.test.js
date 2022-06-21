@@ -281,5 +281,14 @@ ruleTester.run('enforce', rule, {
       }],
       errors: [{ messageId: 'mustSplitLong' }],
     },
+    {
+      code: 'import type {\n  NavigationFailure,\n  LocationAsRelativeRaw,\n  RouteLocationNormalized,\n} from \'vue-router\';',
+      output: 'import type { NavigationFailure, LocationAsRelativeRaw, RouteLocationNormalized } from \'vue-router\';',
+      options: [{
+        items: 3,
+        'max-len': 100,
+      }],
+      errors: [{ messageId: 'mustNotSplit' }],
+    },
   ],
 });
