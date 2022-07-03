@@ -160,6 +160,13 @@ ruleTester.run('enforce', rule, {
         semi: true,
       }],
     },
+    {
+      code: '  import type {\n  NavigationFailure,\n  LocationAsRelativeRaw,\n  RouteLocationNormalized,\n} from \'vue-router\';',
+      options: [{
+        items: 3,
+        'max-len': 100,
+      }],
+    },
   ],
 
   invalid: [
